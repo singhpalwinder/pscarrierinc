@@ -1,0 +1,39 @@
+.job-application {
+    background-color: var(--dark-grey);
+    padding: 10px;
+    border-radius: .5rem;
+    width: 400px;
+    margin-bottom: 10px;
+
+}
+.job-application td {
+  text-align: left;
+}
+
+.job-application label,
+.job-application input {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5px;
+}
+/* Remove number spinners in Chrome, Safari, Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove number spinners in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+@media (max-width: 550px) {
+    .job-application {
+        width: 300px;
+        
+    }
+    label, input {
+        font-size: .7rem;
+    }
+}

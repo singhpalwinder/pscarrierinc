@@ -1,0 +1,43 @@
+{
+  "name": "pscarrierinc",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0",
+    "react-scripts": "^5.0.1",
+    "react-toastify": "^11.0.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "BROWSER=none react-scripts start & sleep 2 && open -a Firefox http://localhost:3000",
+    "start:https": "BROWSER=non HTTPS=true SSL_CRT_FILE=certs/localhost+2.pem SSL_KEY_FILE=certs/localhost+2-key.pem react-scripts start & sleep 2 && open -a Firefox https://localhost:3000",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

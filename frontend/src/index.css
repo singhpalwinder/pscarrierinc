@@ -1,0 +1,26 @@
+:root {
+  --blue: #2B59B0;
+  --black: #090909;
+  --dark-grey: #1E1E20;
+  --light-grey: #3b3b3D;
+  --lighter-grey: #797979;
+  --lighter-lighter-grey: #9E9EA2;
+  --accent-color: #2B59B0;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+ display: flex;
+ flex-direction: column;
+ text-align: center;
+  background-color: var(--black);
+  color: var(--lighter-lighter-grey);
+  font-family: system-ui, sans-serif;
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

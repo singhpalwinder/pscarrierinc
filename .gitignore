@@ -1,0 +1,12 @@
+.DS_Store
+*.sh
+go.*
+test
+helpers
+.env*
+frontend/build
+frontend/node_modules
+frontend/certs
+
+backend/users.db
+backend/pscarrierinc_payStub

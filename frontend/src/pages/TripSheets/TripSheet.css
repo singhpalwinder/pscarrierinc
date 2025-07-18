@@ -1,0 +1,177 @@
+form {
+  justify-content: center ;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+/* TABLES */
+
+.trip-info {
+  width: 60%;
+  padding: 20px;
+  background-color: var(--dark-grey);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  margin-bottom: 1rem;
+  border: none;
+}
+.trip-info input {
+    width: 200px;
+    text-align: center;
+}
+.trips {
+  width: 90%;
+  padding: 10px;
+  background-color: var(--dark-grey);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  margin-bottom: 1rem;
+  border: none;
+  position:relative
+}
+.trip-dates {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+}
+.trip-dates input {
+  width: 150px;
+  justify-content: center;
+
+}
+.trip-dates input[type="date"] {
+  text-align: center;
+
+}
+th {
+
+    padding: 0.65rem .3rem;
+  text-align: center;
+  border-bottom: 1px solid var(--light-grey);
+  color: var(--lighter-lighter-grey);
+    background-color: var(--light-grey);
+  color: white;
+  font-weight: 600;
+  border-bottom: none;
+  border-radius: 2px;
+}
+td {
+  padding: 0.65rem .8rem;
+  text-align: center;
+  border-bottom: 1px solid var(--light-grey);
+  color: var(--lighter-lighter-grey);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+tfoot tr:last-child td {
+  border-top: 1px solid var(--light-grey);
+  border-bottom: none;
+}
+
+/* INPUTS */
+input {
+  background-color: var(--light-grey);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+input:focus {
+  outline: 2px solid var(--blue);
+}
+
+/* LABELS */
+label {
+  color: var(--lighter-grey);
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 0.25rem;
+  flex-wrap: nowrap;
+}
+
+/* BUTTONS */
+button {
+  background-color: var(--blue);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.extras {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  width: 40%;
+  height: 150px;
+  border-radius: 10px;
+  background-color: var(--dark-grey);
+  padding-bottom: 10px;
+}
+.extra-inputs {
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+button:hover {
+  background-color: #244e9d;
+}
+
+h4, h5 {
+  color: var(--lighter-lighter-grey);
+  margin: 0;
+}
+@media (max-width: 550px) {
+
+  th, td {
+    padding: .4rem .4rem;
+    font-size: .7rem;
+
+  }
+   .trip-info {
+    width: 300px;
+    padding: 10px;
+    
+   }
+   .trip-info input {
+    width: 150px;
+   }
+   .trip-dates label {
+    margin-bottom: 0;
+   }
+   .trip-dates {
+    flex-direction: column;
+    align-items: center;
+   }
+   .extras {
+    width: 300px;
+    gap: 20px;
+   }
+   .extras input {
+    width: 100px;
+    margin-bottom: 5px;
+   }
+   .extras label {
+    font-size: .7rem;
+   }
+   
+  input {
+    width: 90%;
+    padding: .2rem;
+  }
+  }
