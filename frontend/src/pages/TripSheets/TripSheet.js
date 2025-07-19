@@ -26,7 +26,6 @@ const TripSheet = () => {
     const saved = sessionStorage.getItem("tripFormData");
     return saved ? JSON.parse(saved) : {};
   });
-
   const [payStub, setPayStub] = useState("");
 
   useEffect(() => {
