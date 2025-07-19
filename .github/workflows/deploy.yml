@@ -1,0 +1,62 @@
+name: Deploy to Raspberry Pi
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (for frontend)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - name: Write .env.production
+        run: echo "${{ secrets.REACT_PROD_ENV }}" > frontend/.env.production
+  
+      - name: Build Frontend
+        if: ${{ contains(github.event.head_commit.message, 'frontend') || github.event_name == 'push' }}
+        working-directory: frontend
+        env:
+          NODE_ENV: production
+        run: |
+          npm install
+          npm run build
+
+      - name: Build Backend
+        if: ${{ contains(github.event.head_commit.message, 'backend') || github.event_name == 'push' }}
+        working-directory: backend
+        run: |
+          go build -o pscarrierinc_payStub
+
+      - name: Deploy to Pi5 via SCP (Frontend)
+        if: ${{ contains(github.event.head_commit.message, 'frontend') || github.event_name == 'push' }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PI5_SSH_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > key.pem
+          chmod 600 key.pem
+          rsync -avz -e "ssh -i key.pem -p 64 -o StrictHostKeyChecking=no" frontend/dist/ psingh@ci.singhpalwinder.com:/var/www/pscarrierinc/
+          rm key.pem
+
+      - name: Deploy to Pi5 via SCP (Backend)
+        if: ${{ contains(github.event.head_commit.message, 'backend') || github.event_name == 'push' }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PI5_SSH_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > key.pem
+          chmod 600 key.pem
+          scp -P 64 -i key.pem backend/pscarrierinc_payStub psingh@ci.singhpalwinder.com:/var/www/pscarrierinc_api
+          rm key.pem
+          ssh -i key.pem -p 64 -o StrictHostKeyChecking=no psingh@ci.singhpalwinder.com "sudo systemctl restart pscarrierinc_payStub.service"
