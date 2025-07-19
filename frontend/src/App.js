@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import TripSheet from "./pages/TripSheets/TripSheet";
 import JobApplication from "./pages/Careers/JobApplication";
