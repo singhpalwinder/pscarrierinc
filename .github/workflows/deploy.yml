@@ -36,7 +36,7 @@ jobs:
       - name: Build Backend
         working-directory: backend
         run: |
-          go build -o pscarrierinc_payStub
+          GOOS=linux GOARCH=arm64 go build -o pscarrierinc_payStub
 
       - name: Deploy to Pi5 via SCP (Frontend)
         env:
