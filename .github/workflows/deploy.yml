@@ -47,7 +47,7 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > key.pem
           chmod 600 key.pem
-          rsync -avz -e "ssh -i key.pem -p 64 -o StrictHostKeyChecking=no" frontend/dist/ psingh@ci.singhpalwinder.com:/var/www/pscarrierinc/
+          rsync -avz -e "ssh -i key.pem -p 64 -o StrictHostKeyChecking=no" frontend/build/ psingh@ci.singhpalwinder.com:/var/www/pscarrierinc/
           rm key.pem
 
       - name: Deploy to Pi5 via SCP (Backend)
