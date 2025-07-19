@@ -26,7 +26,6 @@ jobs:
         run: echo "${{ secrets.REACT_PROD_ENV }}" > frontend/.env.production
   
       - name: Build Frontend
-        if: ${{ contains(github.event.head_commit.message, 'frontend') || github.event_name == 'push' }}
         working-directory: frontend
         env:
           NODE_ENV: production
@@ -35,13 +34,11 @@ jobs:
           npm run build
 
       - name: Build Backend
-        if: ${{ contains(github.event.head_commit.message, 'backend') || github.event_name == 'push' }}
         working-directory: backend
         run: |
           go build -o pscarrierinc_payStub
 
       - name: Deploy to Pi5 via SCP (Frontend)
-        if: ${{ contains(github.event.head_commit.message, 'frontend') || github.event_name == 'push' }}
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PI5_SSH_KEY }}
         run: |
@@ -51,7 +48,6 @@ jobs:
           rm key.pem
 
       - name: Deploy to Pi5 via SCP (Backend)
-        if: ${{ contains(github.event.head_commit.message, 'backend') || github.event_name == 'push' }}
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PI5_SSH_KEY }}
         run: |

@@ -54,7 +54,7 @@ const ShowUsers = () => {
               <th>Email</th>
               <th>Admin</th>
               <th>Staff</th>
-              <th>Driver Test</th>
+              <th>Driver</th>
             </tr>
           </thead>
           <tbody>
