@@ -53,6 +53,11 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > key.pem
           chmod 600 key.pem
-          scp -P 64 -i key.pem backend/pscarrierinc_payStub psingh@ci.singhpalwinder.com:/var/www/pscarrierinc_api
-          rm key.pem
+
+          # Replace binary on the Pi
+          rsync -avz -e "ssh -i key.pem -p 64 -o StrictHostKeyChecking=no" backend/pscarrierinc_payStub psingh@ci.singhpalwinder.com:/var/www/pscarrierinc_api/
+
+          # Restart backend service
           ssh -i key.pem -p 64 -o StrictHostKeyChecking=no psingh@ci.singhpalwinder.com "sudo systemctl restart pscarrierinc_payStub.service"
+
+          rm key.pem

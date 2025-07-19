@@ -97,7 +97,7 @@ const AddUser = () => {
                             <input type="text" id="primary-phone-number" placeholder="0123456789" value={userInfo["primary-phone-number"] || ""} onChange={handleChange} required/>
                         </td>
                         <td>
-                            <label htmlFor="primary-email">Email Address</label>
+                            <label htmlFor="primary-email">Main Email Address</label>
                             <input type="email" id="primary-email" placeholder="johndoe@gmail.com" value={userInfo["primary-email"] || ""} onChange={handleChange} required/>
                         </td>
                         </tr>
