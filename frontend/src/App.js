@@ -11,7 +11,6 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Home from "./pages/Home/Home";
 
 import "./App.css";
-
 function App() {
 
   return (
