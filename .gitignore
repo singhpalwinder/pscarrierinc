@@ -1,6 +1,5 @@
 .DS_Store
 *.sh
-go.*
 test
 helpers
 .env*
