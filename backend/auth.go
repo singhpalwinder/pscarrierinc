@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
@@ -42,7 +43,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Received login for:", creds.Username)
 
-	db, err := sql.Open("sqlite3", "./users.db")
+	db, err := sql.Open("sqlite3", os.Getenv("DB_PATH"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -202,7 +203,7 @@ func refreshHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db, err := sql.Open("sqlite3", "./users.db")
+	db, err := sql.Open("sqlite3", os.Getenv("DB_PATH"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -245,7 +246,7 @@ func logoutHandler(w http.ResponseWriter, r *http.Request) {
 
 	refreshToken := c.Value
 
-	db, err := sql.Open("sqlite3", "/opt/pscarrierinc/users.db")
+	db, err := sql.Open("sqlite3", os.Getenv("DB_PATH"))
 	if err != nil {
 		log.Fatal(err)
 	}

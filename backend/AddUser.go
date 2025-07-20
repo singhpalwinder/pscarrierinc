@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/golang-jwt/jwt/v5"
 	_ "github.com/mattn/go-sqlite3"
@@ -46,7 +47,7 @@ func boolToInt(b bool) int {
 }
 
 func InitDB() *sql.DB {
-	db, err := sql.Open("sqlite3", "./users.db")
+	db, err := sql.Open("sqlite3", os.Getenv("DB_PATH"))
 	if err != nil {
 		log.Fatal(err)
 	}
