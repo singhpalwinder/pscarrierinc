@@ -62,6 +62,9 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > key.pem
           chmod 600 key.pem
 
+          # stop the systemd service
+          ssh -i key.pem -p 64 -o StrictHostKeyChecking=no psingh@ci.singhpalwinder.com "sudo systemctl stop pscarrierinc_payStub.service"
+
           # Replace binary on the Pi
           rsync -avz -e "ssh -i key.pem -p 64 -o StrictHostKeyChecking=no" backend/pscarrierinc_payStub psingh@ci.singhpalwinder.com:/var/www/pscarrierinc_api/
 

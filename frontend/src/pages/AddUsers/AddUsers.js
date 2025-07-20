@@ -13,7 +13,6 @@ const AddUser = () => {
         document.title = "Add Users";
     }, []);
 
-
       useEffect(() => {
         if (!isAuthenticated || !isStaff) {
           navigate("/");
