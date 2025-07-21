@@ -163,6 +163,7 @@ h2, h3, h4{
     padding: 0;
 }
 @media (max-width: 550px) {
+  
     h2{
         font-size: .7rem;
     }

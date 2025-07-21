@@ -9,6 +9,7 @@ function Navbar() {
   const navigate = useNavigate();
   const { isAuthenticated,hasChecked, setIsAuthenticated, isStaff, setIsStaff, isAdmin,setIsAdmin, userName, setUserName } = useContext(AuthContext);
   const [today, setToday] = useState("");
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   
 
@@ -50,37 +51,45 @@ const handleLogout = async () => {
                 </li>
 
         {isAuthenticated  && isStaff && (
-          <li className="dropdown">
-            <span>Admin ▾</span>
-            <ul className="dropdown-content">
-              <li>
-                <Link to="/AddUser" className={location.pathname === "/AddUsers" ? "active" : ""}>
-                  Add User
-                </Link>
-              </li>
-              <li>
-                <Link to="/Users" className={location.pathname === "/Users" ? "active" : ""}>
-                  Users
-                </Link>
-              </li>
-            </ul>
-          </li>
+            <li className="dropdown">
+              <span onClick={() => setOpenDropdown(openDropdown === "admin" ? null : "admin")}>
+                Admin ▾
+              </span>
+              {openDropdown === "admin" && (
+                <ul className="dropdown-content" onClick={() => setOpenDropdown(null)}>
+                  <li>
+                    <Link to="/AddUser" className={location.pathname === "/AddUsers" ? "active" : ""}>
+                      Add User
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/Users" className={location.pathname === "/Users" ? "active" : ""}>
+                      Users
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
             )}
           {isAuthenticated  && (isAdmin || isStaff) && (
           <li className="dropdown">
-            <span>Tools ▾</span>
-            <ul className="dropdown-content">
-              <li>
-                <Link to="/TripSheets" className={location.pathname === "/TripSheets" ? "active" : ""}>
-                  TripSheets
-                </Link>
-                  </li>
-                  <li>
-                    <Link to="MergePDF" className={location.pathname === "/MergePDF" ? "active" : ""}>
-                      MergePDF
-                    </Link>
+            <span onClick={() => setOpenDropdown(openDropdown === "tools" ? null : "tools")}>
+              Tools ▾
+            </span>
+            {openDropdown === "tools" && (
+              <ul className="dropdown-content" onClick={() => setOpenDropdown(null)}>
+                <li>
+                  <Link to="/TripSheets" className={location.pathname === "/TripSheets" ? "active" : ""}>
+                    TripSheets
+                  </Link>
                 </li>
-            </ul>
+                <li>
+                  <Link to="/MergePDF" className={location.pathname === "/MergePDF" ? "active" : ""}>
+                    MergePDF
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
         )}
             <li>

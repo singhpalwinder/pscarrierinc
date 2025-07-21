@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const AuthContext = createContext();
 const API_BASE_URL = process.env.REACT_APP_API_LOGIN_URL;
@@ -6,6 +7,8 @@ const API_BASE_URL = process.env.REACT_APP_API_LOGIN_URL;
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null); // null = not checked yet
   const [hasChecked, setHasChecked] = useState(false);
+  const location = useLocation();
+
 
   const [isStaff, setIsStaff] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -66,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     checkSession();
-  }, [hasChecked]);
+  }, [location.pathname]);
 
   return (
     <AuthContext.Provider
