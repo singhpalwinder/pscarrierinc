@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     checkSession();
-  }, [location.pathname]);
+  }, [location.pathname, hasChecked]);
 
   return (
     <AuthContext.Provider
